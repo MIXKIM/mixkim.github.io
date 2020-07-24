@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Core Java Volume One</title>
+    <url>/2020/07/24/CoreJava11thNoteBookVolumeOne/</url>
+    <content><![CDATA[<p>人真是单纯，一旦知道有回报，就会去努力。努力若有成果，就会加倍努力。</p>
+<a id="more"></a>
+
+<h1 id="Chapter-3"><a href="#Chapter-3" class="headerlink" title="Chapter 3"></a>Chapter 3</h1><h2 id="第一个程序"><a href="#第一个程序" class="headerlink" title="第一个程序"></a>第一个程序</h2><p>Java编程语言区分大小写，java文件的文件名必须与类名相同且首字母必须大写</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello world!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>内置类型的首字母应该小写，否则将使用预定义的类。如double的大写是指的内置类型java.lang.Double</p>
+<p>Java程序设计语言中内置8种基本数据类型：4种整型，2种浮点类型，1种字符类型，1种表示真值</p>
+<h3 id="整型-Integer"><a href="#整型-Integer" class="headerlink" title="整型[Integer]"></a>整型[Integer]</h3><ul>
+<li>short         2字节</li>
+<li>int         4字节</li>
+<li>long        8字节  </li>
+<li>byte        1字节</li>
+</ul>
+<p>注意长整型[L]、十六进制[0x]、八进制[0]、二进制[0b]的字面值表示方法</p>
+<p>Java由于JVM的关系，基本类型所占字节数与平台类型无关</p>
+<p>Java没有提供unsigned类型，但提供了ToUnsignedInt()等方法，可以将基本类型直接转换为无符号类型</p>
+<h3 id="浮点类型-Float"><a href="#浮点类型-Float" class="headerlink" title="浮点类型[Float]"></a>浮点类型[Float]</h3><ul>
+<li>float     4字节(6~7位)</li>
+<li>double    8字节(15位)</li>
+</ul>
+<p>单精度浮点数后面加F或f，默认双精度浮点数</p>
+<p>在十六进制中，科学计数法使用p而不是e，而指数依旧使用十进制表示</p>
+<p>三种异常的浮点数：Double.POSITIVE_INFINITY[正无穷]、Double.NEGATIVE_INFINITY[负无穷]、Double.NaN[非数字] </p>
+<p>判断是否为数 不能直接与Double.NaN比较 所有非数值的值都是不同的 可以使用 Double.isNaN() 方法</p>
+<h3 id="字符类型-Charater"><a href="#字符类型-Charater" class="headerlink" title="字符类型[Charater]"></a>字符类型[Charater]</h3><ul>
+<li>char      4字节     </li>
+</ul>
+<p>char类型表意单个字符，每个字符理论上只需要2字节，但由于Unicode字符数目变多，在Java5之后引入码点解决字符长度不足的问题，导致部分Unicode字符需要两个char类型表示,所以是四个字节</p>
+<p>由于Unicode转义字符会在解析代码前进行，在注释以及字符串中要注意\u的出现会导致字符错误</p>
+<h3 id="真值类型-Boolean"><a href="#真值类型-Boolean" class="headerlink" title="真值类型[Boolean]"></a>真值类型[Boolean]</h3><ul>
+<li>boolean     False/True</li>
+</ul>
+<p>与C/C++不同,Java中不能用0与非0代替True以及False,即整数以及Boolean值不能相互转换</p>
+<h2 id="变量简介"><a href="#变量简介" class="headerlink" title="变量简介"></a>变量简介</h2><h3 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h3><p>Java中不区分定义与声明，也不要求定义位置，按照随用随定义的方式</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> vacationDay;</span><br><span class="line"><span class="keyword">int</span> workDay = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Java11及以后引入var，使得编译器可以自行判断局部变量的类型</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> vacationWeeks = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<p>变量的命名不能以数字开头，不能使用保留字，使用驼峰命名法，长度不限，可以使用中文</p>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>常量使用final字段，一般使用全大写以及下划线命名</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> CM_PER_INCH = <span class="number">2.54</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>当变量取值在某个范围内时 可以使用枚举</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Size&#123;</span><br><span class="line">    SMALL, MEDIUM, LARGE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><ul>
+<li><p>单目算术运算符：+    -     /     %     *</p>
+</li>
+<li><p>双目算术运算符：+=     -=     /=     *=     %=</p>
+</li>
+</ul>
+<p>在除法运算中，浮点型与整型转换时，小数后面的部分将会被直接去掉</p>
+<p>而在部分Intel的处理器中有80位的浮点寄存器，中间有部分截断不按照64位计算。如果需要得到相同的计算结果，使用strictfp关键字进行严格的截断计算，但是会损失性能</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">strictfp</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="关于取模-以及取余-mod"><a href="#关于取模-以及取余-mod" class="headerlink" title="关于取模(%)以及取余(mod)"></a>关于取模(%)以及取余(mod)</h3><h2 id="数学类-Math"><a href="#数学类-Math" class="headerlink" title="数学类[Math]"></a>数学类[Math]</h2><h3 id="计算函数"><a href="#计算函数" class="headerlink" title="计算函数"></a>计算函数</h3><ul>
+<li><p>开方运算</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">sqrt</span><span class="params">(<span class="keyword">double</span> a)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>幂运算</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">pow</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span> <span class="comment">// a ^ b</span></span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h3><ul>
+<li> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">sin</span><span class="params">(<span class="keyword">double</span> a)</span> <span class="comment">// 计算正弦(使用弧度制)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">cos</span><span class="params">(<span class="keyword">double</span> a)</span> <span class="comment">// 计算余弦(使用弧度制)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">tan</span><span class="params">(<span class="keyword">double</span> a)</span> <span class="comment">// 计算正切(使用弧度制)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li> <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">atan</span><span class="params">(<span class="keyword">double</span> a)</span> <span class="comment">// 计算反正切(使用弧度制)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">atan2</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span> <span class="comment">// 计算反正切 使用直角坐标</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">toRadians</span><span class="params">(<span class="keyword">double</span> angdeg)</span> <span class="comment">// 将角度转换为弧度</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>JavaNote</tag>
+      </tags>
+  </entry>
+</search>
