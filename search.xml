@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>霓虹语</title>
+    <url>/2020/07/27/%E9%9C%93%E8%99%B9%E8%AF%AD/</url>
+    <content><![CDATA[<p>如果能努力的话，就去努力吧。</p>
+<p>能前进的话就要一直向前。</p>
+<a id="more"></a>
+
+<h1 id="あ行"><a href="#あ行" class="headerlink" title="あ行"></a>あ行</h1><table>
+<thead>
+<tr>
+<th>あ</th>
+<th>い</th>
+<th>う</th>
+<th>え</th>
+<th>お</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ア</td>
+<td>イ</td>
+<td>ウ</td>
+<td>エ</td>
+<td>オ</td>
+</tr>
+<tr>
+<td>a</td>
+<td>i</td>
+<td>u</td>
+<td>e</td>
+<td>o</td>
+</tr>
+</tbody></table>
+<h1 id="声调-高低型"><a href="#声调-高低型" class="headerlink" title="声调(高低型)"></a>声调(高低型)</h1><ul>
+<li><p>数字表记法 ：最后一个高读音节①</p>
+</li>
+<li><p>横线表记法：横线高音 竖线下降</p>
+</li>
+<li><p>规则：</p>
+<ul>
+<li>第一个音节和第二个音节高低相反</li>
+<li>一个单词只有一个下降或者没有下降<ul>
+<li>平板型：一低二高一直高，助词也高</li>
+<li>头高型：一高二低一直低，助词也低</li>
+<li>中高型：两头低中间高，助词低</li>
+<li>尾高型：一低二高一直高，助词低</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="か行"><a href="#か行" class="headerlink" title="か行"></a>か行</h1><table>
+<thead>
+<tr>
+<th>か</th>
+<th>き</th>
+<th>く</th>
+<th>け</th>
+<th>こ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>カ</td>
+<td>キ</td>
+<td>ク</td>
+<td>ケ</td>
+<td>コ</td>
+</tr>
+<tr>
+<td>ka</td>
+<td>ki</td>
+<td>ku</td>
+<td>ke</td>
+<td>ko</td>
+</tr>
+</tbody></table>
+<h1 id="さ行"><a href="#さ行" class="headerlink" title="さ行"></a>さ行</h1><table>
+<thead>
+<tr>
+<th>さ</th>
+<th>し</th>
+<th>す</th>
+<th>せ</th>
+<th>そ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>サ</td>
+<td>シ</td>
+<td>ス</td>
+<td>セ</td>
+<td>ソ</td>
+</tr>
+<tr>
+<td>sa</td>
+<td>shi</td>
+<td>su</td>
+<td>se</td>
+<td>so</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>霓虹语笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Core Java Volume One</title>
     <url>/2020/07/24/CoreJava11thNoteBookVolumeOne/</url>
     <content><![CDATA[<p>人真是单纯，一旦知道有回报，就会去努力。努力若有成果，就会加倍努力。</p>
@@ -211,45 +316,6 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Console cons = System.console();</span><br><span class="line">String username = cons.readLine(<span class="string">"Username : "</span>); <span class="comment">// 读取用户名，可见</span></span><br><span class="line"><span class="keyword">char</span>[] passwd = cons.readPassword(<span class="string">"Password : "</span>); <span class="comment">// 读取密码，不可见</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>JavaNote</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>霓虹语</title>
-    <url>/2020/07/27/%E9%9C%93%E8%99%B9%E8%AF%AD/</url>
-    <content><![CDATA[<p>如果能努力的话，就去努力吧。</p>
-<p>能前进的话就要一直向前。</p>
-<a id="more"></a>
-
-<h1 id="あ行"><a href="#あ行" class="headerlink" title="あ行"></a>あ行</h1><p>あ        い　    う　    え　     お</p>
-<p>ア        イ　    ウ　    エ　   オ</p>
-<p>a           i          u         e          o</p>
-<h1 id="声调-高低型"><a href="#声调-高低型" class="headerlink" title="声调(高低型)"></a>声调(高低型)</h1><ul>
-<li><p>数字表记法 ：最后一个高读音节①</p>
-</li>
-<li><p>横线表记法：横线高音 竖线下降</p>
-</li>
-<li><p>规则：</p>
-<ul>
-<li>第一个音节和第二个音节高低相反</li>
-<li>一个单词只有一个下降或者没有下降<ul>
-<li>平板型：一低二高一直高，助词也高</li>
-<li>头高型：一高二低一直低，助词也低</li>
-<li>中高型：两头低中间高，助词低</li>
-<li>尾高型：一低二高一直高，助词低</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="か行"><a href="#か行" class="headerlink" title="か行"></a>か行</h1><p>か　き　く    け    こ</p>
-<p>カ　キ    ク    ケ    コ</p>
-<p>ka    ki    ku    ke    ko</p>
-<h1 id="さ行"><a href="#さ行" class="headerlink" title="さ行"></a>さ行</h1><p>さ　　し　　す　　せ　　そ</p>
-<p>サ　　シ　　ス　　　セ　　ソ</p>
-<p>sa 　　shi 　su　　 se 　　so</p>
-]]></content>
-      <tags>
-        <tag>霓虹语笔记</tag>
       </tags>
   </entry>
 </search>
