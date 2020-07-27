@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="独守一座空城">
 <meta property="og:description" content="人真是单纯，一旦知道有回报，就会去努力。努力若有成果，就会加倍努力。">
 <meta property="article:published_time" content="2020-07-24T09:59:00.000Z">
-<meta property="article:modified_time" content="2020-07-24T16:56:23.098Z">
+<meta property="article:modified_time" content="2020-07-27T12:14:20.484Z">
 <meta property="article:author" content="MIXKIM">
 <meta property="article:tag" content="JavaNote">
 <meta name="twitter:card" content="summary">
@@ -334,7 +334,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  2.3k
                 </span>
               
 
@@ -350,7 +350,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  9
                 </span>
               
             </div>
@@ -421,9 +421,10 @@
 <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><ul>
 <li><p>单目算术运算符：+    -     /     %     *</p>
 </li>
-<li><p>双目算术运算符：+=     -=     /=     *=     %=</p>
+<li><p>双目算术运算符：+=     -=     /=     *=     %= ++ –</p>
 </li>
 </ul>
+<p>自增自减运算符从右往左计算，++a先执行a+1再将a带入表达式，a++是先将a带入计算，再执行a+1</p>
 <p>在除法运算中，浮点型与整型转换时，小数后面的部分将会被直接去掉</p>
 <p>而在部分Intel的处理器中有80位的浮点寄存器，中间有部分截断不按照64位计算。如果需要得到相同的计算结果，使用strictfp关键字进行严格的截断计算，但是会损失性能</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">strictfp</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
@@ -458,9 +459,124 @@
 <li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">log</span><span class="params">(<span class="keyword">double</span> a)</span> <span class="comment">// 返回 lna 的值</span></span></span><br></pre></td></tr></table></figure>
 </li>
 <li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">log10</span><span class="params">(<span class="keyword">double</span> a)</span> <span class="comment">// 返回 lga 的值</span></span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
+<h3 id="常量-1"><a href="#常量-1" class="headerlink" title="常量"></a>常量</h3><ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> PI</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> E</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
+<h3 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h3><pre class="mermaid">graph LR
+  id5(char) --> id3(int)
+  id1(byte) --> id2(short)
+  id2(short) --> id3(int)
+  id3(int) --> id4(long)
+  id3(int) --> id6(double)
+  id7(float) --> id6(double)
+  id3(int) -.-> id7(float)
+  id4(long) -.-> id6(double)
+  id4(long) -.-> id7(float)</pre>
+<p>实线代表无精度损失</p>
+<p>虚线代表有精度损失</p>
+<blockquote>
+<p>运算逻辑:<br>二元运算符计算时应当先将两者转换为相同的类型再进行运算<br>如果其中有一个为double，则另一个会被转换为double<br>否则若其中有一个为float，则另一个会被转换为float<br>否则若其中有一个为long，则另一个会被转换为long<br>如果上述过程都不符合则都会被转换为int类型</p>
+</blockquote>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>如果在类型转换中将会发生截断，则必须显示表达出来</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> ADouble = <span class="number">9.7</span>;</span><br><span class="line"><span class="keyword">int</span> ANum2 = (<span class="keyword">int</span>)ADouble;</span><br><span class="line"><span class="keyword">int</span> ANum3 = (<span class="keyword">int</span>)Math.round(ADouble);</span><br><span class="line">System.out.println(ANum2);  <span class="comment">// 9</span></span><br><span class="line">System.out.println(ANum3);  <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+
+<p>其中Math.round为四舍五入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">round</span><span class="params">(<span class="keyword">float</span> a)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">round</span><span class="params">(<span class="keyword">double</span> a)</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
+<li><p>比较运算：==（相等） !=（不相等） &gt;（大于） &gt;=（大于等于） &lt;（小于） &lt;=（小于等于） </p>
+</li>
+<li><p>逻辑运算：||（或） &amp;&amp;（与） !（非）</p>
+<ul>
+<li>逻辑运算采取短路计算的方法，即计算前面的式子时如果可以得出逻辑运算的结果，后面的式子将会被跳过，可以利用短路的性质跳过可能出错的地方<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ANum4 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>(ANum4 != <span class="number">0</span> &amp;&amp; <span class="number">1</span> / ANum4 &gt; ANum4 + ANum3) &#123;     <span class="comment">// 利用短路性质 避免计算1/0出错</span></span><br><span class="line">System.out.println(<span class="number">1</span> / ANum4);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>三目运算符：condition ? expression1 : expersion2; 条件成立执行表达式一，条件不成立执行表达式二</p>
+</li>
+</ul>
+<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><ul>
+<li><p>逻辑运算：&amp;（与） |（或） ^（异或） ~（非）</p>
+<blockquote>
+<p>在布尔运算中，| &amp; 和 &amp;&amp; || 的计算逻辑相同，但前者不采取短路计算</p>
+</blockquote>
+</li>
+<li><p>位移运算符：&lt;&lt;（左移） &gt;&gt;（右移高位填充符号位） &gt;&gt;&gt;（右移高位填零）</p>
+<blockquote>
+<p>右操作数可以模32（long型模64）结果相同 Eg. 1 &lt;&lt; 35 等价于 1 &lt;&lt; 3</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>Java中采取的是Unicode字符集</p>
+<p>而在Java中字符串并不是基本类型，而是作为一个预定义类（String）在Java标准库中提供，其中由””括起来的都是这个类的实例</p>
+<p>Java中的字符串从零开始计数</p>
+<ul>
+<li><p>获得字串</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">substring</span><span class="params">(<span class="keyword">int</span> beginIndex)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">substring</span><span class="params">(<span class="keyword">int</span> beginIndex, <span class="keyword">int</span> endIndex)</span></span></span><br></pre></td></tr></table></figure></li>
+<li><p>拼接字串，在Java中+操作符可以拼接两个字串，同时也可以将非字符串值转换为字符串，利用任意Java对象中都提供的toString()方法</p>
+</li>
+<li><p>使用界定符分割</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">join</span><span class="params">(CharSequence delimiter, ChatSequence... elements)</span> <span class="comment">// delimiter是分界符</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">join</span><span class="params">(CharSequence delimiter, Iterable&lt;? extends CharSequence&gt; elements)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重复字符串</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">repeat</span><span class="params">(<span class="keyword">int</span> count)</span> <span class="comment">// count重复次数</span></span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>与C++不同Java中的字符串并不是字符数组，即不可以修改字符串中的某个字符</p>
+<p>Java中的字符串更加类似于C++中的String*，Java的字符串是共享的，储存在堆中，属于公共区域</p>
+<ul>
+<li><p>判断字符串是否相同<br>判断字符串是否相同不能使用==，==仅能判断字符串所处的位置空间是否相同，应该使用equals方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object anObject)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equalsIgnoreCase</span><span class="params">(String anotherString)</span> <span class="comment">// 忽略大小写</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获得</p>
+</li>
+</ul>
+<h3 id="关于Java的编码"><a href="#关于Java的编码" class="headerlink" title="关于Java的编码"></a>关于Java的编码</h3><p>空串是长度为0，内容为空</p>
+<p>Null串，不指向任何对象</p>
+<p>有关于<a href="https://blog.csdn.net/ldanduo/article/details/8203532/" target="_blank" rel="noopener">编码</a>的内容，有关于<a href="https://blog.csdn.net/qq_22771739/article/details/84261165" target="_blank" rel="noopener">码点</a>的内容</p>
+<p>Java使用UTF-16的传输方式表示Unicode编码，但由于部分UTF-16传输方式无法使用一个代码单元表示，所以有部分码字需要两个代码单元表示</p>
+<ul>
+<li><p>代码单元的数目</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">length</span><span class="params">()</span> <span class="comment">// 返回代码单元的数目</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>码点的数目</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">codePointCount</span><span class="params">(<span class="keyword">int</span> beforeIndex, <span class="keyword">int</span> endIndex)</span> <span class="comment">// 返回码点的数目</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获得特定代码单元的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">charAt</span><span class="params">(<span class="keyword">int</span> index)</span> <span class="comment">// 返回特定位置的代码单元</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获得特定码点的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">codePointAt</span><span class="params">(<span class="keyword">int</span> index)</span> <span class="comment">// 返回特定位置的码点</span></span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>在Java14的文档中codePoint有关的方法全部变成静态方法，并且字符串由参数列表导入，但在jdk14下使用有问题</p>
+<h3 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h3><p>由于Java中的String类形如C++中的String*，则在使用较短字符拼接成字符串时效率较低且浪费空间，此时可以使用StringBuilder类构建字符串</p>
+<ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> StringBuilder <span class="title">append</span><span class="params">(Object obj)</span> <span class="comment">// 拼接字符串（几乎支持所有类型）</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用继承自Object的toString方法得到拼接以后的字符串</p>
+</li>
+</ul>
+<h2 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h2><h3 id="标准输入流"><a href="#标准输入流" class="headerlink" title="标准输入流"></a>标准输入流</h3><ul>
+<li><p>读取输入，使用Scanner对象，扫描标准输入流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用next*()方法读取标准输入流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">next</span><span class="params">()</span> <span class="comment">// 终止于空白符</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">nextLine</span><span class="params">()</span>  <span class="comment">// 读取下一行，以换行符为界</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nextInt</span><span class="params">()</span>  <span class="comment">// 读取下一个整数</span></span></span><br><span class="line"><span class="function">  ···</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="关于非明文输入Console类"><a href="#关于非明文输入Console类" class="headerlink" title="关于非明文输入Console类"></a>关于非明文输入Console类</h4><p>java.io.Console类，该类必须在cli中运行，其中对于密码的输入不可见</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Console cons = System.console();</span><br><span class="line">String username = cons.readLine(<span class="string">"Username : "</span>); <span class="comment">// 读取用户名，可见</span></span><br><span class="line"><span class="keyword">char</span>[] passwd = cons.readPassword(<span class="string">"Password : "</span>); <span class="comment">// 读取密码，不可见</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -619,7 +735,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3"><span class="nav-number">1.</span> <span class="nav-text">Chapter 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个程序"><span class="nav-number">1.1.</span> <span class="nav-text">第一个程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整型-Integer"><span class="nav-number">1.2.1.</span> <span class="nav-text">整型[Integer]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浮点类型-Float"><span class="nav-number">1.2.2.</span> <span class="nav-text">浮点类型[Float]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符类型-Charater"><span class="nav-number">1.2.3.</span> <span class="nav-text">字符类型[Charater]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#真值类型-Boolean"><span class="nav-number">1.2.4.</span> <span class="nav-text">真值类型[Boolean]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量简介"><span class="nav-number">1.3.</span> <span class="nav-text">变量简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量的定义"><span class="nav-number">1.3.1.</span> <span class="nav-text">变量的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量"><span class="nav-number">1.3.2.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举"><span class="nav-number">1.3.3.</span> <span class="nav-text">枚举</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">1.4.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-number">1.4.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于取模-以及取余-mod"><span class="nav-number">1.4.2.</span> <span class="nav-text">关于取模(%)以及取余(mod)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学类-Math"><span class="nav-number">1.5.</span> <span class="nav-text">数学类[Math]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算函数"><span class="nav-number">1.5.1.</span> <span class="nav-text">计算函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三角函数"><span class="nav-number">1.5.2.</span> <span class="nav-text">三角函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指数函数"><span class="nav-number">1.5.3.</span> <span class="nav-text">指数函数</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3"><span class="nav-number">1.</span> <span class="nav-text">Chapter 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个程序"><span class="nav-number">1.1.</span> <span class="nav-text">第一个程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整型-Integer"><span class="nav-number">1.2.1.</span> <span class="nav-text">整型[Integer]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浮点类型-Float"><span class="nav-number">1.2.2.</span> <span class="nav-text">浮点类型[Float]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符类型-Charater"><span class="nav-number">1.2.3.</span> <span class="nav-text">字符类型[Charater]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#真值类型-Boolean"><span class="nav-number">1.2.4.</span> <span class="nav-text">真值类型[Boolean]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量简介"><span class="nav-number">1.3.</span> <span class="nav-text">变量简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量的定义"><span class="nav-number">1.3.1.</span> <span class="nav-text">变量的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量"><span class="nav-number">1.3.2.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举"><span class="nav-number">1.3.3.</span> <span class="nav-text">枚举</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">1.4.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-number">1.4.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于取模-以及取余-mod"><span class="nav-number">1.4.2.</span> <span class="nav-text">关于取模(%)以及取余(mod)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学类-Math"><span class="nav-number">1.5.</span> <span class="nav-text">数学类[Math]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算函数"><span class="nav-number">1.5.1.</span> <span class="nav-text">计算函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三角函数"><span class="nav-number">1.5.2.</span> <span class="nav-text">三角函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指数函数"><span class="nav-number">1.5.3.</span> <span class="nav-text">指数函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量-1"><span class="nav-number">1.5.4.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动转换"><span class="nav-number">1.5.5.</span> <span class="nav-text">自动转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制类型转换"><span class="nav-number">1.5.6.</span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">1.5.7.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位运算符"><span class="nav-number">1.5.8.</span> <span class="nav-text">位运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.6.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于Java的编码"><span class="nav-number">1.6.1.</span> <span class="nav-text">关于Java的编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringBuilder"><span class="nav-number">1.6.2.</span> <span class="nav-text">StringBuilder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入与输出"><span class="nav-number">1.7.</span> <span class="nav-text">输入与输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标准输入流"><span class="nav-number">1.7.1.</span> <span class="nav-text">标准输入流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于非明文输入Console类"><span class="nav-number">1.7.1.1.</span> <span class="nav-text">关于非明文输入Console类</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -668,6 +784,14 @@
 
 
 
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
 
         
 
